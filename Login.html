@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO Hardware | Staff Login</title>
+    <style>
+        /* Base Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* MATCHED BACKGROUND: 
+               Uses the same hardware image and blue gradient overlay from the Enrollment page 
+            */
+            background: linear-gradient(rgba(0, 154, 217, 0.5), rgba(0, 154, 217, 0.7)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Glassmorphism Login Card */
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        /* Logo Badge */
+        .logo-box {
+            width: 70px;
+            height: 70px;
+            background: #87CEEB;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 35px;
+            box-shadow: 0 5px 15px rgba(135, 206, 235, 0.4);
+        }
+
+        .header h2 {
+            color: #1a2a3a;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #5d6d7e;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 13px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d5dbdb;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        input:focus, select:focus {
+            border-color: #87CEEB;
+            background-color: #f7fdff;
+        }
+
+        /* Role Selector Specific Style */
+        select {
+            cursor: pointer;
+            font-weight: bold;
+            color: #1976D2;
+            background-color: #f4faff;
+        }
+
+        /* Login Button */
+        .login-btn {
+            background: #87CEEB;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4);
+        }
+
+        .login-btn:hover {
+            background: #00BFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 191, 255, 0.4);
+        }
+
+        /* Footer Links */
+        .footer-links {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        .footer-links a {
+            color: #1976D2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+       
+        <div class="logo-box">⚒</div>
+        
+        <div class="header">
+            <h2>Staff Login</h2>
+            <p>NYONDO Hardware | Nansana Branch</p>
+        </div>
+
+        <form action="#">
+            <div class="form-group">
+                <label for="user-role">Assigned System Role</label>
+                <select id="user-role" name="role" required>
+                    <option value="" disabled selected>Select your role...</option>
+                    <option value="administrator">Administrator</option>
+                    <option value="stock-manager">Stock Manager</option>
+                    <option value="sales-attendant">Sales Attendant</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Staff Email / ID</label>
+                <input type="text" id="email" placeholder="e.g. staff@nyondo.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Security Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="login-btn">Secure Login</button>
+        </form>
+
+        <div class="footer-links">
+           New staff member? <a href="Signup.html">Enroll here</a> <br><br>
+    
+    <a href="Password.Reset.html">Forgot Password?</a><br>
+
+ <a href="home.html" class="back-home">← Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NYONDO General Hardware - Credit Sales</title>
+    <style>
+      :root {
+        --primary-blue: #2c3e50;
+        --accent-orange: #e67e22;
+        --light-gray: #f4f7f6;
+        --border-color: #dcdde1;
+        --debt-red: #c0392b;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light-gray);
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      header {
+        border-bottom: 3px solid var(--accent-orange);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--primary-blue);
+        text-transform: uppercase;
+      }
+
+      .location {
+        font-style: italic;
+        color: #7f8c8d;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        background: var(--primary-blue);
+        color: white;
+        padding: 12px;
+        border-radius: 4px;
+        margin-top: 25px;
+      }
+
+      .grid-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+      }
+
+      input,
+      select {
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      th {
+        background-color: #f8f9fa;
+      }
+
+      /* Total Amount Styles */
+      .summary-section {
+        background-color: #fdf2e9;
+        border: 2px solid var(--accent-orange);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #edccaf;
+      }
+
+      .grand-total {
+        font-size: 1.5em;
+        color: var(--debt-red);
+        font-weight: 900;
+        border-bottom: none;
+      }
+
+      .btn-submit {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .btn-submit:hover {
+        background-color: #1a252f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>NYONDO General Hardware LTD</h1>
+        <p class="location">Nansana Branch | Credit Sales Management</p>
+      </header>
+
+      <form>
+        <section>
+          <h3>1. Debtor Information</h3>
+          <div class="grid-row">
+            <div class="form-group">
+              <label>Full Name (Match National ID)</label>
+              <input type="text" placeholder="Full Name" required />
+            </div>
+            <div class="form-group">
+              <label>NIN Number</label>
+              <input type="text" placeholder="NIN" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="07..." required />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>2. Items Taken on Credit</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Product Category</th>
+                <th>Specification</th>
+                <th>Qty</th>
+                <th>Unit Price (UGX)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cement</td>
+                <td>
+                  <select>
+                    <option>Cem II N</option>
+                    <option>Cem III N</option>
+                  </select>
+                </td>
+                <td><input type="number" style="width: 60px" /></td>
+                <td><input type="number" placeholder="Enter Price" /></td>
+              </tr>
+              <tr>
+                <td>Iron Bars</td>
+                <td>
+                  <select>
+                    <option>10mm</option>
+                    <option>12mm</option>
+                    <option>16mm</option>
+                  </select>
+                </td>
+                <td><input type="number" style="width: 60px" /></td>
+                <td><input type="number" placeholder="Enter Price" /></td>
+              </tr>
+              <tr>
+                <td>Nails (5kg Pack)</td>
+                <td>
+                  <select>
+                    <option>1"</option>
+                    <option>3"</option>
+                    <option>4"</option>
+                    <option>5"</option>
+                    <option>Roofing</option>
+                  </select>
+                </td>
+                <td><input type="number" style="width: 60px" /></td>
+                <td><input type="number" placeholder="Enter Price" /></td>
+              </tr>
+              <tr>
+                <td>Fencing/Other</td>
+                <td>
+                  <select>
+                    <option>Wheelbarrow</option>
+                    <option>Wire Mesh</option>
+                    <option>Barbed Wire (High Tensile)</option>
+                    <option>Barbed Wire (Low Tensile)</option>
+                    <option>Iron Sheets</option>
+                  </select>
+                </td>
+                <td><input type="number" style="width: 60px" /></td>
+                <td><input type="number" placeholder="Enter Price" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="summary-section">
+          <h3 style="margin-top: 0; background: var(--accent-orange)">
+            4. Financial Summary
+          </h3>
+
+          <div class="total-row">
+            <span>Sub-Total (Goods):</span>
+            <span
+              ><input
+                type="number"
+                placeholder="0"
+                style="
+                  text-align: right;
+                  border: none;
+                  background: transparent;
+                  font-weight: bold;
+                "
+              />
+              UGX</span
+            >
+          </div>
+
+          <div class="total-row">
+            <div
+              class="form-group"
+              style="flex-direction: row; align-items: center; gap: 10px"
+            >
+              <label style="margin-bottom: 0">Transport Charge:</label>
+              <select style="padding: 5px">
+                <option value="0">Free (Within 10km & >500k)</option>
+                <option value="30000">Standard (30,000/-)</option>
+                <option value="0">Self-Pickup (0/-)</option>
+              </select>
+            </div>
+            <span>
+              <input
+                type="number"
+                value="0"
+                style="
+                  text-align: right;
+                  border: none;
+                  background: transparent;
+                  font-weight: bold;
+                  width: 100px;
+                "
+              />
+              UGX</span
+            >
+          </div>
+
+          <div class="total-row grand-total">
+            <span>TOTAL DEBT AMOUNT:</span>
+            <span
+              ><input
+                type="number"
+                placeholder="0"
+                readonly
+                style="
+                  text-align: right;
+                  border: none;
+                  background: transparent;
+                  font-size: 1em;
+                  font-weight: 900;
+                  color: var(--debt-red);
+                  width: 150px;
+                "
+              />
+              UGX</span
+            >
+          </div>
+
+          <div class="form-group" style="margin-top: 15px">
+            <label>Promise to Pay Date:</label>
+            <input type="date" required />
+          </div>
+        </section>
+
+        <button type="submit" class="btn-submit">
+          CONFIRM & SAVE DEBT RECORD
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

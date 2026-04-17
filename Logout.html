@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO Hardware | Secure Logout</title>
+    <style>
+        /* Base Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Background matched with System Login/Enrollment */
+            background: linear-gradient(rgba(0, 154, 217, 0.6), rgba(0, 154, 217, 0.8)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Logout Card */
+        .logout-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 450px;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Success Icon */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #e3fcec;
+            color: #27ae60;
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.2);
+        }
+
+        h2 {
+            color: #1a2a3a;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #5d6d7e;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Role Badge */
+        .session-info {
+            background: #f4faff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px dashed #87CEEB;
+        }
+
+        .session-info span {
+            color: #1976D2;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        /* Progress Bar (Pure CSS Animation) */
+        .redirect-timer {
+            height: 4px;
+            width: 100%;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .progress {
+            height: 100%;
+            background: #87CEEB;
+            width: 100%;
+            animation: drain 3s linear forwards;
+        }
+
+        @keyframes drain {
+            from { width: 100%; }
+            to { width: 0%; }
+        }
+
+        .btn-return {
+            display: block;
+            background: #87CEEB;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4);
+        }
+
+        .btn-return:hover {
+            background: #00BFFF;
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logout-card">
+        <div class="success-icon">✔️</div>
+
+        <h2>Successfully Logged Out</h2>
+        <p>Your session has been securely closed. All system access for this station has been terminated.</p>
+
+        <div class="session-info">
+            <span>Security Status: Session Cleared</span>
+        </div>
+
+        <div class="redirect-timer">
+            <div class="progress"></div>
+        </div>
+        
+        <a href="#" class="btn-return">Return to Login Screen</a>
+
+        <div class="footer-note">
+            NYONDO General Hardware LTD | Nansana Branch<br>
+            Internal Security Protocol v2.0
+        </div>
+    </div>
+
+</body>
+</html>

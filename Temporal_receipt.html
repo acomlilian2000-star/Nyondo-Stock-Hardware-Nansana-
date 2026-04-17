@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Earner Scheme - Sky Blue System</title>
+    <style>
+        :root {
+            --scheme-green: #2ecc71;
+            --nyondo-blue: #1e3799;
+            --border-light: #dcdde1;
+            --sky-blue: #87CEEB; /* Sky Blue Background */
+        }
+
+        /* Automatic Numbering Logic via CSS */
+        body {
+            counter-reset: salaryReceipt 450; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--sky-blue);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .receipt-container {
+            background: white;
+            width: 850px;
+            padding: 50px;
+            border: 1px solid var(--border-light);
+            border-top: 12px solid var(--nyondo-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        /* Auto-generating Receipt Number via CSS */
+        .receipt-no-display::after {
+            counter-increment: salaryReceipt;
+            content: " SCH-TMP-" counter(salaryReceipt);
+            font-weight: bold;
+            color: var(--nyondo-blue);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--scheme-green);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .brand-info h1 {
+            color: var(--nyondo-blue);
+            margin: 0;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+        }
+
+        .brand-info p {
+            margin: 4px 0;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .entry-group {
+            margin-bottom: 15px;
+        }
+
+        .entry-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--nyondo-blue);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .entry-field {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid var(--border-light);
+            padding: 6px 0;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--nyondo-blue);
+            padding: 12px;
+            text-align: left;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--scheme-green);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        .item-name {
+            font-weight: 500;
+            color: #2d3436;
+        }
+
+        .summary-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .summary-table {
+            width: 380px;
+            background: #fafafa;
+            padding: 15px;
+            border: 1px solid #eee;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .grand-total {
+            background-color: var(--nyondo-blue);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #95a5a6;
+            border-top: 1px dashed #ccc;
+            padding-top: 20px;
+            line-height: 1.5;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sig-box {
+            width: 220px;
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .print-area {
+            margin-top: 30px;
+            padding-bottom: 50px;
+            text-align: center;
+        }
+
+        .btn-print {
+            background-color: var(--nyondo-blue);
+            color: white;
+            padding: 15px 45px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .print-area { display: none; }
+            .receipt-container { 
+                box-shadow: none; 
+                border: 1px solid #eee; 
+                width: 100%; 
+                padding: 15px;
+            }
+            .entry-field::placeholder { color: transparent; }
+            input[type="date"]::-webkit-calendar-picker-indicator { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="receipt-container">
+        <header>
+            <div class="brand-info">
+                <h1>NYONDO General Hardware LTD</h1>
+                <p>Salary Earner Deposit Scheme | Nansana Branch</p>
+                <p>Building Uganda One Brick at a Time</p>
+            </div>
+            <div style="text-align: right;">
+                <span class="entry-label">System Receipt No.</span>
+                <div class="receipt-no-display"></div>
+            </div>
+        </header>
+
+        <div class="details-grid">
+            <div>
+                <div class="entry-group">
+                    <span class="entry-label">Employee / Depositor Name</span>
+                    <input type="text" class="entry-field" placeholder="Full Name">
+                </div>
+                <div class="entry-group">
+                    <span class="entry-label">Employer / Company</span>
+                    <input type="text" class="entry-field" placeholder="Place of Work">
+                </div>
+            </div>
+            <div>
+                <div class="entry-group">
+                    <span class="entry-label">Deposit Date</span>
+                    <input type="date" class="entry-field">
+                </div>
+                <div class="entry-group">
+                    <span class="entry-label">Phone Contact</span>
+                    <input type="text" class="entry-field" placeholder="07xx xxxxxx">
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="40%">Target Material Items</th>
+                    <th width="20%">Qty Required</th>
+                    <th width="20%">Unit Price (UGX)</th>
+                    <th width="20%">Total (UGX)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="item-name">1. Cement (Cem II N / Cem III N)</td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                </tr>
+                <tr>
+                    <td class="item-name">2. Iron Bars (10mm / 12mm / 16mm)</td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                </tr>
+                <tr>
+                    <td class="item-name">3. Nails (Assorted Sizes & Roofing)</td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                </tr>
+                <tr>
+                    <td class="item-name">4. Iron Sheets (Colors & Gauges)</td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                    <td><input type="text" class="entry-field"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary-wrapper">
+            <div class="summary-table">
+                <div class="summary-row">
+                    <span>Today's Deposit:</span>
+                    <input type="text" class="entry-field" style="width: 160px; text-align: right; font-weight: bold;">
+                </div>
+                <div class="summary-row">
+                    <span>Balance Brought Forward:</span>
+                    <input type="text" class="entry-field" style="width: 160px; text-align: right;">
+                </div>
+                <div class="summary-row grand-total">
+                    <span>TOTAL CREDIT HELD:</span>
+                    <input type="text" class="entry-field" style="width: 160px; text-align: right; color: white; font-weight: bold; border: none;">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p><strong>RECORDS NOTICE:</strong> This is a temporary acknowledgement for fund deposits under the Salary Scheme. Quantities are estimates; materials are released at the market price prevailing on the day of collection.</p>
+            <p><strong>Thank you for choosing NYONDO General Hardware LTD.</strong></p>
+        </div>
+
+        <div class="signature-section">
+            <div class="sig-box">Manager / Cashier Signature</div>
+            <div class="sig-box">Depositor Signature</div>
+        </div>
+    </div>
+
+    <div class="print-area">
+        <button class="btn-print" onclick="window.print()">PRINT TEMPORARY RECEIPT</button>
+    </div>
+
+</body>
+</html>

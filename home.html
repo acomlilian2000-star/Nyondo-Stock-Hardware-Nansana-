@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO Hardware - Internal System</title>
+     
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Background matched with Enrollment Page */
+        body, html {
+            height: 100%;
+            background: linear-gradient(rgba(0, 154, 217, 0.5), rgba(0, 154, 217, 0.7)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Landing Card */
+        .landing-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border-top: 8px solid #87CEEB; 
+        }
+
+        /* Logo Area */
+        .hardware-logo {
+            width: 90px;
+            height: 90px;
+            background-color: #87CEEB;
+            border-radius: 15px; 
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(135, 206, 235, 0.4);
+        }
+
+        .logo-icon {
+            font-size: 50px;
+            color: white;
+        }
+
+        h1 {
+            color: #1a2a3a;
+            font-size: 26px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .welcome-msg {
+            color: #2c3e50;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        p {
+            color: #5d6d7e;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Button Action Area */
+        .action-area {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Unified Button Styling */
+        .btn {
+            display: block;
+            padding: 16px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Login Button (Filled) */
+        .login-btn {
+            background-color: #87CEEB; 
+            color: white;
+            box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4);
+        }
+
+        .login-btn:hover {
+            background-color: #00BFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 191, 255, 0.4);
+        }
+
+        /* Signup Button (Outline) */
+        .signup-btn {
+            background-color: transparent;
+            color: #1976D2;
+            border: 2px solid #87CEEB;
+        }
+
+        .signup-btn:hover {
+            background-color: rgba(135, 206, 235, 0.1);
+            border-color: #00BFFF;
+            transform: translateY(-1px);
+        }
+
+        /* Footer Info */
+        .branch-info {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        .location-tag {
+            color: #1976D2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-container">
+        <div class="hardware-logo">
+            <span class="logo-icon">⚒</span>
+        </div>
+
+        <h1>NYONDO Hardware</h1>
+        
+        <h2 class="welcome-msg">Internal Portal</h2>
+        
+        <p>Management & Inventory Control System</p>
+
+        <div class="action-area">
+            <a href="login.html" class="btn login-btn">Staff Login</a>
+            <a href="signup.html" class="btn signup-btn">Enroll New Staff</a>
+        </div>
+
+        <div class="branch-info">
+            Nansana Branch | <span class="location-tag">NYONDO General Hardware LTD</span>
+        </div>
+    </div>
+
+</body>
+</html>

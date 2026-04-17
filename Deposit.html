@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Earner Scheme - NYONDO General Hardware LTD</title>
+    <style>
+        body {
+            background-color: skyblue;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 850px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #222;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scheme-badge {
+            display: inline-block;
+            background-color: #0078d4;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #0078d4;
+            border-left: 4px solid #0078d4;
+            padding-left: 10px;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        input, select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border-color: #0078d4;
+            outline: none;
+        }
+
+        .notice-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 16px;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: #444;
+        }
+
+        .required-star {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>NYONDO General Hardware LTD</h1>
+        <span class="scheme-badge">Salary Earner Deposit Scheme Portal</span>
+    </header>
+
+    <form action="#">
+        
+        <h3>1. Member Registration (National ID Verification)</h3>
+        <div class="form-grid">
+            <div class="input-group">
+                <label>Full Name <span class="required-star">*</span></label>
+                <input type="text" name="customerName" placeholder="As per National ID" required>
+            </div>
+            <div class="input-group">
+                <label>NIN Number <span class="required-star">*</span></label>
+                <input type="text" name="ninNumber" placeholder="CM000000000000" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number (Valid) <span class="required-star">*</span></label>
+                <input type="tel" name="customerPhone" placeholder="07XXXXXXXX" required>
+            </div>
+            <div class="input-group">
+                <label>Date of Registration</label>
+                <input type="date" name="regDate" required>
+            </div>
+        </div>
+
+        <h3>2. Deposit & Item Selection</h3>
+        <div class="notice-box">
+            <strong>Scheme Rule:</strong> Per NYONDO policy, deposits are restricted to 
+            <strong>Cement, Iron Sheets, and Iron Bars</strong> only. 
+            Final quantity is determined by the unit price on the date of collection.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th>Specification</th>
+                    <th>Deposit Amount (UGX)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="depositItem" required>
+                            <option value="">Select Category</option>
+                            <option value="Cement">Cement (Cem II/N & III/N)</option>
+                            <option value="Iron Bars">Iron Bars (10, 12, 16mm)</option>
+                            <option value="Iron Sheets">Iron Sheets</option>
+                        </select>
+                    </td>
+                    <td><input type="text" name="spec" placeholder="e.g. 12mm / Gauge 30"></td>
+                    <td><input type="number" name="depositAmount" placeholder="Enter Amount" required></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3. Transaction Summary</h3>
+        <div class="form-grid">
+            <div class="input-group">
+                <label>Temporary Receipt No.</label>
+                <input type="text" name="receiptNo" placeholder="TR-100234" required>
+            </div>
+            <div class="input-group">
+                <label>Payment Method</label>
+                <select name="paymentType">
+                    <option value="Bank">Bank Deposit</option>
+                    <option value="MobileMoney">Mobile Money</option>
+                    <option value="Cash">Cash at Counter</option>
+                </select>
+            </div>
+        </div>
+
+       <div class="print-area">
+    <button class="btn-print" onclick="window.print()">PRINT TEMPORARY RECEIPT</button>
+    <br><br>
+    <a href="Temporal_receipt.html">Temporal_receipt</a>
+</div>
+
+    </form>
+</div>
+
+</body>
+</html>

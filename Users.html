@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO System Users - Sky Blue</title>
+    <style>
+        :root {
+            --sky-blue: #87CEEB;
+            --nyondo-blue: #1e3799;
+            --white: #ffffff;
+            /* Role Colors */
+            --color-admin: #f39c12;
+            --color-stock: #d35400;
+            --color-sales: #27ae60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--sky-blue);
+            margin: 0;
+            padding: 40px;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--nyondo-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .user-grid {
+            display: grid;
+            /* Changed to 3 columns for better symmetry */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* User Card Illustration */
+        .user-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-bottom: 8px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .user-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: #f1f2f6;
+        }
+
+        .role-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .access-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Specific Role Borders */
+        .admin-card { border-color: var(--color-admin); }
+        .stock-card { border-color: var(--color-stock); }
+        .sales-card { border-color: var(--color-sales); }
+
+        .btn-manage {
+            background: var(--nyondo-blue);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+
+        .btn-manage:hover {
+            opacity: 0.9;
+        }
+
+        .system-footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--nyondo-blue);
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .user-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>System User Roles</h1>
+            <p>Select your department to access the specialized management portal</p>
+        </header>
+
+        <div class="user-grid">
+            
+            <div class="user-card admin-card">
+                <div>
+                    <div class="icon-circle">👑</div>
+                    <span class="role-title">Owner / Admin</span>
+                    <p class="access-label">Full System Control<br>Financial Audits<br>User Permissions</p>
+                </div>
+                <button class="btn-manage">Admin Portal</button>
+            </div>
+
+            <div class="user-card stock-card">
+                <div>
+                    <div class="icon-circle">🏗️</div>
+                    <span class="role-title">Stock Manager</span>
+                    <p class="access-label">Inventory Tracking<br>Supplier Orders<br>Stock Adjustments</p>
+                </div>
+                <button class="btn-manage">Inventory Portal</button>
+            </div>
+
+            <div class="user-card sales-card">
+                <div>
+                    <div class="icon-circle">🛒</div>
+                    <span class="role-title">Sales Attendant</span>
+                    <p class="access-label">Point of Sale (POS)<br>Customer Receipts<br>Daily Cash-ups</p>
+                </div>
+                <button class="btn-manage">Sales Portal</button>
+            </div>
+
+        </div>
+
+        <div class="system-footer">
+            NYONDO General Hardware LTD | Internal Security System v2.0
+        </div>
+    </div>
+
+</body>
+</html>

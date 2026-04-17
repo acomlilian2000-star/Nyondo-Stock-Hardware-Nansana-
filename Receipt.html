@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO General Hardware - System Receipt</title>
+    <style>
+        :root {
+            --primary-blue: #1e3799;
+            --secondary-gray: #57606f;
+            --border-color: #dcdde1;
+        }
+
+        /* Logic for Automatic Numbering */
+        body {
+            counter-reset: receiptCount 5000; /* Starts numbering from 5001 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f6fa;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .receipt-container {
+            background: white;
+            width: 850px;
+            padding: 50px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        /* Generating the number automatically via CSS */
+        .auto-receipt-no::after {
+            counter-increment: receiptCount;
+            content: " NY-" counter(receiptCount);
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .brand-info h1 {
+            color: var(--primary-blue);
+            margin: 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .brand-info p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: var(--secondary-gray);
+        }
+
+        .receipt-header {
+            text-align: right;
+        }
+
+        .receipt-header h2 {
+            margin: 0;
+            color: #2f3542;
+            letter-spacing: 2px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .entry-group {
+            margin-bottom: 15px;
+        }
+
+        .entry-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .entry-field {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 0;
+            font-size: 1rem;
+            font-family: inherit;
+            background: transparent;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th {
+            background-color: #f1f2f6;
+            color: #333;
+            padding: 10px;
+            text-align: left;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .item-name {
+            font-weight: 500;
+            color: #2d3436;
+        }
+
+        .summary-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .summary-table {
+            width: 320px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .grand-total {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sig-box {
+            width: 200px;
+            text-align: center;
+        }
+
+        .sig-line {
+            border-top: 1px solid #333;
+            margin-bottom: 5px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #95a5a6;
+            border-top: 1px dashed #ccc;
+            padding-top: 20px;
+        }
+
+        .print-area {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-print {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .print-area { display: none; }
+            .receipt-container { 
+                box-shadow: none; 
+                border: none; 
+                width: 100%; 
+                padding: 10px;
+            }
+            input { border: none !important; }
+            /* Ensures date picker looks like regular text on print */
+            input[type="date"]::-webkit-calendar-picker-indicator { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="receipt-container">
+        <header>
+            <div class="brand-info">
+                <h1>NYONDO General Hardware LTD</h1>
+                <p>Nansana, Uganda | Wholesale & Retail Hardware</p>
+                <p>Construction Equipment Specialists</p>
+            </div>
+            <div class="receipt-header">
+                <h2>CASH SALE</h2>
+                <div class="entry-group" style="margin-top:10px;">
+                    <span class="entry-label">System Receipt No.</span>
+                    <div class="auto-receipt-no"></div> </div>
+            </div>
+        </header>
+
+        <div class="details-grid">
+            <div>
+                <div class="entry-group">
+                    <span class="entry-label">Customer Name</span>
+                    <input type="text" class="entry-field" placeholder="Enter name...">
+                </div>
+                <div class="entry-group">
+                    <span class="entry-label">Phone / Contact</span>
+                    <input type="text" class="entry-field" placeholder="Enter contact...">
+                </div>
+            </div>
+            <div>
+                <div class="entry-group">
+                    <span class="entry-label">Date of Issue</span>
+                    <input type="date" class="entry-field">
+                </div>
+                <div class="entry-group">
+                    <span class="entry-label">Delivery Info</span>
+                    <input type="text" class="entry-field" placeholder="Location details...">
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="45%">Item Description</th>
+                    <th width="15%">Qty</th>
+                    <th width="20%">Unit Price</th>
+                    <th width="20%">Total (UGX)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="item-name">Cement (Cem II N / Cem III N)</td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td></tr>
+                <tr><td class="item-name">Iron Bars (10mm / 12mm / 16mm)</td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td></tr>
+                <tr><td class="item-name">Nails (1", 3", 4", 5" & Roofing)</td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td></tr>
+                <tr><td class="item-name">Iron Sheets (Assorted Colors/Gauges)</td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td></tr>
+                <tr><td class="item-name">Wheelbarrows / Wire Mesh</td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td></tr>
+                <tr><td class="item-name">Barbed Wire (High/Low Tensile)</td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td><td><input type="text" class="entry-field"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="summary-wrapper">
+            <div class="summary-table">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <input type="text" class="entry-field" style="width:140px; text-align:right;">
+                </div>
+                <div class="summary-row">
+                    <span>Transport Fee:</span>
+                    <input type="text" class="entry-field" style="width:140px; text-align:right;">
+                </div>
+                <div class="summary-row grand-total">
+                    <span>NET TOTAL:</span>
+                    <input type="text" class="entry-field" style="width:140px; text-align:right; color:white; font-weight:bold;">
+                </div>
+            </div>
+        </div>
+
+        <div class="signature-section">
+            <div class="sig-box">
+                <div class="sig-line"></div>
+                <span class="entry-label">Authorized Signature</span>
+            </div>
+            <div class="sig-box">
+                <div class="sig-line"></div>
+                <span class="entry-label">Receiver's Signature</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>Goods once sold are not returnable. Free transport within 10km for orders above 500,000/-</p>
+            <p><strong>Nansana Branch | NYONDO General Hardware LTD</strong></p>
+        </div>
+    </div>
+
+    <div class="print-area">
+        <button class="btn-print" onclick="window.print()">PRINT OFFICIAL RECEIPT</button>
+    </div>
+
+</body>
+</html>

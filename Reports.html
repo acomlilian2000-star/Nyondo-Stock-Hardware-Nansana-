@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO General Hardware - Master Report</title>
+    <style>
+        :root {
+            --primary-blue: #1e3799;
+            --accent-gold: #f39c12;
+            --bg-skyblue: skyblue;
+            --danger-red: #eb4d4b;
+            --success-green: #20bf6b;
+            --warning-orange: #f39c12;
+            --light-gray: #f1f2f6;
+            --scheme-purple: #6c5ce7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-skyblue);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px double var(--primary-blue);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header-title {
+            color: var(--primary-blue);
+            margin: 0;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Specific header for the Salary Scheme section */
+        .scheme-header {
+            background: var(--scheme-purple);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background-color: var(--light-gray);
+            color: #333;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        /* Status & Re-order Alerts (Pure CSS) */
+        .status-pill {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .unpaid { background: #ffdada; color: var(--danger-red); }
+        .paid { background: #d1f7e2; color: var(--success-green); }
+        .saving { background: #e0dcfc; color: var(--scheme-purple); }
+
+        [data-stock="low"] {
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        [data-stock="low"]::after {
+            content: "⚠️ RE-ORDER";
+            display: inline-block;
+            margin-left: 10px;
+            background: var(--danger-red);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            animation: blinker 1.5s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0.3; }
+        }
+
+        /* Summary Dashboard */
+        .summary-grid {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .summary-box {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .box-debt { border: 2px solid var(--danger-red); color: var(--danger-red); }
+        .box-owing { border: 2px solid var(--primary-blue); color: var(--primary-blue); }
+        .box-deposits { border: 2px solid var(--scheme-purple); color: var(--scheme-purple); }
+
+        .summary-label { margin: 0; font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
+        .summary-value { margin: 5px 0; font-size: 1.5rem; }
+
+        /* Footer & Print */
+        .btn-print {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .btn-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <header>
+        <h1 class="header-title">NYONDO General Hardware LTD</h1>
+        <p><strong>Integrated Business Management Report</strong></p>
+        <p>Location: Nansana | Status: Active | Date: April 10, 2026</p>
+    </header>
+
+    <section class="report-section">
+        <h3 class="section-title">1. Registered Client Credit Records</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>NIN Number</th>
+                    <th>Phone Number</th>
+                    <th>Items Taken</th>
+                    <th>Total Debt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Mukasa</td>
+                    <td>CM88012345678</td>
+                    <td>0701234567</td>
+                    <td>Cement (Cem II N) x 50</td>
+                    <td>1,700,000 UGX</td>
+                </tr>
+                <tr>
+                    <td>Sarah Namuli</td>
+                    <td>CF92098765432</td>
+                    <td>0772987654</td>
+                    <td>Iron Bars (12mm) x 20</td>
+                    <td>840,000 UGX</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="report-section">
+        <h3 class="section-title scheme-header">2. Salary Earner Deposit Scheme (Savings)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Workplace</th>
+                    <th>Monthly Deposit</th>
+                    <th>Goal/Target Item</th>
+                    <th>Current Balance</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Robert Atwine</td>
+                    <td>Nansana Municipal</td>
+                    <td>250,000</td>
+                    <td>Roofing Sheets (50)</td>
+                    <td>2,100,000 UGX</td>
+                    <td><span class="status-pill saving">ACTIVE SAVER</span></td>
+                </tr>
+                <tr>
+                    <td>Grace Nakato</td>
+                    <td>Mulago Hospital</td>
+                    <td>400,000</td>
+                    <td>Face Bricks (Bulk)</td>
+                    <td>1,200,000 UGX</td>
+                    <td><span class="status-pill saving">ACTIVE SAVER</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="report-section">
+        <h3 class="section-title">3. Inventory & Logistics Summary</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Description</th>
+                    <th>Available Stock</th>
+                    <th>Unit Cost</th>
+                    <th>Selling Price</th>
+                    <th>Transport Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cement (Cem III N)</td>
+                    <td>120 Bags</td>
+                    <td>31,000</td>
+                    <td>34,000</td>
+                    <td>Free (Within 10km)</td>
+                </tr>
+                <tr>
+                    <td>Iron Sheets (G28 Blue)</td>
+                    <td data-stock="low">45 Sheets</td>
+                    <td>45,000</td>
+                    <td>52,000</td>
+                    <td>Charged (30,000/-)</td>
+                </tr>
+                <tr>
+                    <td>Nails (5kg Packs)</td>
+                    <td>60 Packs</td>
+                    <td>24,000</td>
+                    <td>28,000</td>
+                    <td>Self-Pickup</td>
+                </tr>
+                <tr>
+                    <td>PVC Pipes (4-inch)</td>
+                    <td data-stock="low">12 units</td>
+                    <td>15,000</td>
+                    <td>22,000</td>
+                    <td>Self-Pickup</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="report-section">
+        <h3 class="section-title">4. Supplier Settlement Ledger</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Factory / Depot</th>
+                    <th>Items Supplied</th>
+                    <th>Supply Value</th>
+                    <th>Payment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Hima Cement Depot</b></td>
+                    <td>Cem II & III Stock</td>
+                    <td>6,200,000 UGX</td>
+                    <td><span class="status-pill unpaid">UNPAID / CREDIT</span></td>
+                </tr>
+                <tr>
+                    <td><b>Roofings Ltd</b></td>
+                    <td>Iron Bars & Wire Mesh</td>
+                    <td>3,400,000 UGX</td>
+                    <td><span class="status-pill unpaid">UNPAID / CREDIT</span></td>
+                </tr>
+                <tr>
+                    <td><b>China Depot (Import)</b></td>
+                    <td>Door Hinges & Lock Sets</td>
+                    <td>1,850,000 UGX</td>
+                    <td><span class="status-pill unpaid">UNPAID / CREDIT</span></td>
+                </tr>
+                <tr>
+                    <td><b>Uganda Baati</b></td>
+                    <td>Colored Iron Sheets</td>
+                    <td>4,500,000 UGX</td>
+                    <td><span class="status-pill paid">PAID / CASH</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="summary-grid">
+        <div class="summary-box box-debt">
+            <p class="summary-label">Total Customer Debt</p>
+            <h2 class="summary-value">2,540,000 UGX</h2>
+        </div>
+        <div class="summary-box box-deposits">
+            <p class="summary-label">Total Scheme Deposits</p>
+            <h2 class="summary-value">3,300,000 UGX</h2>
+        </div>
+        <div class="summary-box box-owing">
+            <p class="summary-label">Owing to Suppliers</p>
+            <h2 class="summary-value">11,450,000 UGX</h2>
+        </div>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">GENERATE OFFICIAL PRINT REPORT</button>
+
+    <footer class="report-footer">
+        <p>NYONDO General Hardware LTD - Management Information System</p>
+        <p>Verified by System Admin | April 2026</p>
+    </footer>
+</div>
+
+</body>
+</html>
