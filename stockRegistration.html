@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO Stock Registration</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* Sky Blue */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 650px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #004a7c;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .section-title {
+            border-bottom: 2px solid #87CEEB;
+            margin: 20px 0 15px 0;
+            padding-bottom: 5px;
+            color: #004a7c;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .input-row .form-group {
+            flex: 1;
+        }
+
+        .payment-box {
+            background-color: #f0faff; 
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #87CEEB;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .helper-text {
+            font-size: 12px;
+            color: #d9534f;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #004a7c;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #002d4d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>NYONDO General Hardware LTD</h1>
+        <p class="subtitle">Official Stock Arrival & Finance Portal</p>
+
+        <form>
+            <div class="section-title">Item Information</div>
+            
+            <div class="form-group">
+                <label for="item-name">Select Hardware Item</label>
+                <select id="item-name" required>
+                    <option value="" disabled selected>-- Select from Inventory --</option>
+                    <optgroup label="Construction Materials">
+                        <option value="cem-ii">Cement (CEM II N)</option>
+                        <option value="cem-iii">Cement (CEM III N)</option>
+                        <option value="iron-10">Iron Bars (10mm)</option>
+                        <option value="iron-12">Iron Bars (12mm)</option>
+                        <option value="iron-16">Iron Bars (16mm)</option>
+                    </optgroup>
+                    <optgroup label="Fasteners & Tools">
+                        <option value="nails-mix">Nails (Assorted sizes)</option>
+                        <option value="roofing-nails">Roofing Nails</option>
+                        <option value="wheelbarrow">Wheelbarrows</option>
+                    </optgroup>
+                    <optgroup label="Fencing & Roofing">
+                        <option value="barbed-wire">Barbed Wire</option>
+                        <option value="wire-mesh">Wire Mesh</option>
+                        <option value="iron-sheets">Iron Sheets</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="input-row">
+                <div class="form-group">
+                    <label for="supplier-select">Factory Supplier</label>
+                    <select id="supplier-select" required>
+                        <option value="" disabled selected>-- Select Depot --</option>
+                        <option value="hima">Hima Cement Ltd</option>
+                        <option value="tororo">Tororo Cement Ltd</option>
+                        <option value="roofings">Roofings Group</option>
+                        <option value="uganda-baati">Uganda Baati</option>
+                        <option value="other">Other / Local Supplier</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity Received</label>
+                    <input type="number" id="quantity" placeholder="Units received" required>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="form-group">
+                    <label for="unit-cost">Unit Cost (UGX)</label>
+                    <input type="number" id="unit-cost" placeholder="Predetermined Cost" required>
+                </div>
+                <div class="form-group">
+                    <label for="unit-price">Unit Price (UGX)</label>
+                    <input type="number" id="unit-price" placeholder="Predetermined Price" required>
+                </div>
+            </div>
+
+            <div class="section-title">Supplier Payment Status</div>
+            <div class="payment-box">
+                <label>Transaction Type</label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="pay-method" value="cash" checked> Full Cash
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="pay-method" value="credit"> Full Credit
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="pay-method" value="partial"> Partial Payment
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount-paid">Actual Amount Paid (UGX)</label>
+                    <input type="number" id="amount-paid" placeholder="e.g., 500000" required>
+                    <p class="helper-text">* If this is a Full Credit transaction, please enter 0.</p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Complete Stock Entry</button>
+        </form>
+    </div>
+
+</body>
+</html>
