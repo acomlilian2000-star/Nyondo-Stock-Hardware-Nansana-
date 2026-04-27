@@ -3,195 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYONDO Hardware | Staff Login</title>
+    <title>NYONDO ERP | Secure Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Base Setup */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --nyondo-blue: #0ea5e9;
+            --nyondo-dark: #0369a1;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-input: #f8fafc;
+            --border-color: #f1f5f9;
+            --overlay: rgba(135, 206, 235, 0.85); /* Matched Sky Blue Overlay */
         }
 
-        body {
-            /* MATCHED BACKGROUND: 
-               Uses the same hardware image and blue gradient overlay from the Enrollment page 
-            */
-            background: linear-gradient(rgba(0, 154, 217, 0.5), rgba(0, 154, 217, 0.7)), 
-                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470&auto=format&fit=crop');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body { 
+            /* MATCHED BACKGROUND IDENTITY */
+            background: linear-gradient(var(--overlay), var(--overlay)), 
+                        url('https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
             min-height: 100vh;
             padding: 20px;
         }
 
-        /* Glassmorphism Login Card */
+        /* Glassmorphism Effect */
         .login-card {
             background: rgba(255, 255, 255, 0.95);
             width: 100%;
             max-width: 420px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 45px 35px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
-        /* Logo Badge */
-        .logo-box {
-            width: 70px;
-            height: 70px;
-            background: #87CEEB;
-            margin: 0 auto 20px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 35px;
-            box-shadow: 0 5px 15px rgba(135, 206, 235, 0.4);
-        }
-
-        .header h2 {
-            color: #1a2a3a;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            color: #5d6d7e;
-            font-size: 14px;
+        .logo-section {
             margin-bottom: 30px;
         }
 
-        /* Form Styling */
+        .logo-icon-box {
+            width: 75px;
+            height: 75px;
+            background: var(--nyondo-dark);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(3, 105, 161, 0.3);
+        }
+
+        .logo-section h2 {
+            color: var(--nyondo-dark);
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .logo-section p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Form Structure */
         .form-group {
             text-align: left;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 13px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--nyondo-dark);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        /* Icons inside inputs */
+        .input-wrapper i.field-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1rem;
+            pointer-events: none;
         }
 
         input, select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #d5dbdb;
-            border-radius: 10px;
-            outline: none;
-            font-size: 14px;
+            padding: 15px 15px 15px 48px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            background-color: var(--bg-input);
             transition: all 0.3s ease;
-            background-color: white;
+            color: var(--text-dark);
         }
 
-        input:focus, select:focus {
-            border-color: #87CEEB;
-            background-color: #f7fdff;
-        }
-
-        /* Role Selector Specific Style */
         select {
             cursor: pointer;
-            font-weight: bold;
-            color: #1976D2;
-            background-color: #f4faff;
+            appearance: none; /* Hide default arrow */
         }
 
-        /* Login Button */
+        /* Custom Dropdown Arrow */
+        .input-wrapper::after {
+            content: "\f107"; /* Font Awesome Chevron Down */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+            font-size: 1rem;
+        }
+        /* Hide arrow for standard inputs */
+        .input-wrapper:not(.select-group)::after { display: none; }
+
+        input:focus, select:focus {
+            border-color: var(--nyondo-blue);
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+        }
+
+        /* Submit Button */
         .login-btn {
-            background: #87CEEB;
+            background: var(--nyondo-blue);
             color: white;
-            padding: 15px;
             border: none;
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
+            transition: all 0.3s ease;
             margin-top: 10px;
-            transition: 0.3s;
-            text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
         }
 
         .login-btn:hover {
-            background: #00BFFF;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 191, 255, 0.4);
+            background: var(--nyondo-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(3, 105, 161, 0.3);
         }
 
-        /* Footer Links */
+        /* Footer links */
         .footer-links {
-            margin-top: 25px;
-            font-size: 13px;
-            color: #7f8c8d;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         .footer-links a {
-            color: #1976D2;
+            color: var(--nyondo-blue);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .footer-links a:hover {
             text-decoration: underline;
+        }
+
+        .branch-tag {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .login-card { padding: 35px 25px; }
         }
     </style>
 </head>
 <body>
 
     <div class="login-card">
-       
-        <div class="logo-box">⚒</div>
-        
-        <div class="header">
-            <h2>Staff Login</h2>
-            <p>NYONDO Hardware | Nansana Branch</p>
+        <div class="logo-section">
+            <div class="logo-icon-box">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <h2>NYONDO ERP</h2>
+            <p>Secure Staff Access Terminal</p>
         </div>
 
-        <form action="#">
+        <form id="loginForm">
             <div class="form-group">
-                <label for="user-role">Assigned System Role</label>
-                <select id="user-role" name="role" required>
-                    <option value="" disabled selected>Select your role...</option>
-                    <option value="administrator">Administrator</option>
-                    <option value="stock-manager">Stock Manager</option>
-                    <option value="sales-attendant">Sales Attendant</option>
-                </select>
+                <label>System Access Level</label>
+                <div class="input-wrapper select-group">
+                    <i class="fa-solid fa-user-tag field-icon"></i>
+                    <select id="userRole" required>
+                        <option value="" disabled selected>Identify your role...</option>
+                        <option value="administrator">Administrator</option>
+                        <option value="stock-manager">Stock Manager</option>
+                        <option value="sales-attendant">Sales Attendant</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="email">Staff Email / ID</label>
-                <input type="text" id="email" placeholder="e.g. staff@nyondo.com" required>
+                <label>Staff ID / Username</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-id-card field-icon"></i>
+                    <input type="text" placeholder="e.g. j.doe_nyondo" required>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="password">Security Password</label>
-                <input type="password" id="password" placeholder="••••••••" required>
+                <label>Security Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock field-icon"></i>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
             </div>
 
-            <button type="submit" class="login-btn">Secure Login</button>
+            <button type="submit" class="login-btn">
+                <i class="fa-solid fa-shield-check"></i> Authenticate & Login
+            </button>
         </form>
 
         <div class="footer-links">
-           New staff member? <a href="Signup.html">Enroll here</a> <br><br>
-    
-    <a href="Password.Reset.html">Forgot Password?</a><br>
+            <p>New staff member? <a href="Signup.html">Activate here</a></p>
+            <p style="margin-top: 12px;"><a href="Login.html">Trouble signing in?</a></p>
+        </div>
 
- <a href="home.html" class="back-home">← Back to Home</a>
+        <div class="branch-tag">
+            <i class="fa-solid fa-location-dot"></i> Nansana Branch • Kampala, Uganda
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const role = document.getElementById('userRole').value;
+            
+            // In a production environment, you would validate credentials here.
+            alert(`Authenticating as [${role.replace('-', ' ').toUpperCase()}]... Redirecting...`);
+            
+            // Redirect based on role (future development)
+            // if(role === 'administrator') window.location.href = 'admin_dashboard.html';
+            window.location.href = 'dashboard.html'; 
+        });
+    </script>
 
 </body>
 </html>

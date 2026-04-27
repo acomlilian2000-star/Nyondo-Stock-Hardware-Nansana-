@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYONDO | Sales Attendant Dashboard</title>
+    <style>
+        :root {
+            --sky-blue: #87CEEB;
+            --nyondo-dark: #003049;
+            --nyondo-gold: #f77f00;
+            --danger: #d62828;
+            --success: #2a9d8f;
+            --white: #ffffff;
+            --soft-blue: #e1f5fe;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--sky-blue);
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--nyondo-dark);
+            color: white;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .brand-container { display: flex; align-items: center; gap: 15px; }
+
+        .logo-placeholder {
+            width: 45px; height: 45px;
+            background: var(--nyondo-gold);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; color: var(--nyondo-dark);
+        }
+
+        .nav-brand-text { font-size: 1.2rem; font-weight: bold; letter-spacing: 1px; line-height: 1; }
+        .nav-brand-text span { font-size: 0.7rem; display: block; color: var(--sky-blue); margin-top: 4px; }
+
+        .user-status {
+            font-size: 0.85rem;
+            color: var(--nyondo-gold);
+            font-weight: 600;
+            border-right: 1px solid #444;
+            padding-right: 15px;
+            margin-right: 5px;
+        }
+
+        .logout-btn {
+            background: var(--danger);
+            color: white; border: none;
+            padding: 8px 16px; border-radius: 4px;
+            cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+
+        .logout-btn:hover { background: #a31d1d; }
+
+        /* Layout */
+        .container { padding: 20px; max-width: 1400px; margin: auto; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--nyondo-gold);
+        }
+
+        .stat-card h3 { margin: 0; font-size: 0.75rem; color: #777; text-transform: uppercase; }
+        .stat-card p { font-size: 1.3rem; font-weight: bold; margin: 8px 0; color: var(--nyondo-dark); }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 20px;
+        }
+
+        .section-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .table-scroll { overflow-x: auto; max-height: 550px; overflow-y: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; background: var(--soft-blue); padding: 12px; position: sticky; top: 0; font-size: 0.85rem; }
+        td { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.85rem; }
+
+        .status-low { color: var(--danger); font-weight: bold; }
+        .status-ok { color: var(--success); font-weight: bold; }
+
+        .btn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .btn {
+            padding: 12px; border: none; border-radius: 6px;
+            cursor: pointer; font-weight: 600; transition: 0.2s;
+            text-align: left;
+        }
+
+        .btn-blue { background: var(--nyondo-dark); color: white; }
+        .btn-gold { background: var(--nyondo-gold); color: white; }
+        .btn-outline-danger { background: white; border: 2px solid var(--danger); color: var(--danger); }
+        .btn:hover { filter: brightness(1.2); transform: translateX(5px); }
+
+        .logic-box {
+            background: #fff8e1;
+            padding: 15px; border-radius: 8px;
+            border-left: 5px solid var(--nyondo-gold);
+            margin-top: 10px; font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand-container">
+            <div class="logo-placeholder">N</div>
+            <div class="nav-brand-text">
+                NYONDO GENERAL HARDWARE
+                <span>Sales Attendant Terminal • Nansana</span>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:15px;">
+            <span class="user-status">Logged in as: Sales Attendant</span>
+            <span id="live-time" style="font-size: 0.85rem;"></span>
+            <button class="logout-btn" onclick="handleLogout()">LOGOUT</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="stats-grid">
+            <div class="stat-card"><h3>My Sales Today</h3><p>UGX 1.2M</p></div>
+            <div class="stat-card"><h3>Active Debt</h3><p>18 Customers</p></div>
+            <div class="stat-card"><h3>Salary Scheme</h3><p>42 Members</p></div>
+            <div class="stat-card"><h3>Pending Deliveries</h3><p>7 Orders</p></div>
+        </div>
+
+        <div class="main-layout">
+            
+            <div class="content-left">
+                <div class="section-box">
+                    <h3>📦 Live Inventory (Read-Only)</h3>
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Category</th>
+                                    <th>Qty Available</th>
+                                    <th>Selling Price (UGX)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Cement (Cem II N)</td><td>Cement</td><td>450 Bags</td><td>38,000</td><td class="status-ok">Optimal</td></tr>
+                                <tr><td>Cement (Cem III N)</td><td>Cement</td><td>120 Bags</td><td>37,000</td><td class="status-low">Low</td></tr>
+                                <tr><td>Iron Bars (10mm)</td><td>Steel</td><td>85 Pcs</td><td>35,000</td><td class="status-ok">Optimal</td></tr>
+                                <tr><td>Iron Bars (12mm)</td><td>Steel</td><td>12 Pcs</td><td>55,000</td><td class="status-low">Critically Low</td></tr>
+                                <tr><td>Iron Bars (16mm)</td><td>Steel</td><td>40 Pcs</td><td>75,000</td><td class="status-ok">Optimal</td></tr>
+                                <tr><td>Nails (1, 3, 4, 5 inch)</td><td>Fasteners</td><td>In Stock</td><td>32,000</td><td class="status-ok">In Stock</td></tr>
+                                <tr><td>Roofing Nails (5kg)</td><td>Fasteners</td><td>50 Packs</td><td>38,000</td><td class="status-ok">Optimal</td></tr>
+                                <tr><td>Wheelbarrows (Heavy)</td><td>Equipment</td><td>18 Units</td><td>150,000</td><td class="status-ok">Optimal</td></tr>
+                                <tr><td>Wire Mesh / Barbed Wire</td><td>Fencing</td><td>62 Rolls</td><td>Variable</td><td class="status-ok">Optimal</td></tr>
+                                <tr><td>Iron Sheets (Coloured)</td><td>Roofing</td><td>300 Pcs</td><td>88,000</td><td class="status-ok">Optimal</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-right">
+                <div class="section-box">
+                    <h3>⚡ Sales Quick Actions</h3>
+                    <div class="btn-grid">
+                        <button class="btn btn-blue" onclick="goTo('Sales.html')">📝 New Standard Sale</button>
+                        <button class="btn btn-gold" onclick="goTo('Deposit.html')">👷 Register Scheme Deposit</button>
+                        <button class="btn btn-outline-danger" onclick="goTo('credit.html')">⚠️ Issue Goods on Credit</button>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>🚛 Transport Check</h3>
+                    <input type="number" id="tAmount" placeholder="Sale Amount (UGX)" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <button class="btn btn-blue" style="width:100%; text-align:center;" onclick="calcTransport()">Verify Free Delivery</button>
+                    <div id="tResult" class="logic-box">System ready.</div>
+                    
+                    <button class="btn btn-gold" style="margin-top:10px; width:100%; text-align:center; background:#444;" onclick="goTo('transport.html')">Open Transport Log</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goTo(page) { window.location.href = page; }
+
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-time').innerText = now.toLocaleString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function handleLogout() {
+            if(confirm("Are you sure you want to log out?")) {
+                window.location.href = 'Logout.html';
+            }
+        }
+
+        function calcTransport() {
+            const amt = document.getElementById('tAmount').value;
+            const res = document.getElementById('tResult');
+            if (amt >= 500000) {
+                res.innerHTML = "<strong>✅ FREE:</strong> Nansana Local delivery applied.";
+                res.style.borderLeftColor = "var(--success)";
+            } else if (amt > 0) {
+                res.innerHTML = "<strong>⚠️ FEE:</strong> Add UGX 30,000 for transport.";
+                res.style.borderLeftColor = "var(--danger)";
+            }
+        }
+    </script>
+</body>
+</html>

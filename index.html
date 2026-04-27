@@ -11,14 +11,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Background matched with Enrollment Page */
+        /* Background matched with previous internal pages */
         body, html {
             height: 100%;
-            background: linear-gradient(rgba(0, 154, 217, 0.5), rgba(0, 154, 217, 0.7)), 
-                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470&auto=format&fit=crop');
+            background: linear-gradient(rgba(135, 206, 235, 0.8), rgba(3, 105, 161, 0.85)), 
+                        url('https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -32,59 +32,71 @@
         .landing-container {
             background: rgba(255, 255, 255, 0.95);
             padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             text-align: center;
             max-width: 450px;
             width: 90%;
-            border-top: 8px solid #87CEEB; 
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
         }
 
         /* Logo Area */
         .hardware-logo {
-            width: 90px;
-            height: 90px;
-            background-color: #87CEEB;
-            border-radius: 15px; 
+            width: 85px;
+            height: 85px;
+            background-color: #0369a1; /* Deep NYONDO Blue */
+            border-radius: 20px; 
             display: inline-flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(135, 206, 235, 0.4);
+            box-shadow: 0 10px 15px -3px rgba(3, 105, 161, 0.3);
         }
 
         .logo-icon {
-            font-size: 50px;
+            font-size: 45px;
             color: white;
         }
 
+        h2.subtitle {
+            color: #64748b;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
         h1 {
-            color: #1a2a3a;
-            font-size: 26px;
+            color: #0f172a;
+            font-size: 24px;
             margin-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 800;
         }
 
         .welcome-msg {
-            color: #2c3e50;
-            font-size: 22px;
-            font-weight: 600;
+            color: #0369a1;
+            font-size: 20px;
+            font-weight: 700;
             margin-bottom: 10px;
             margin-top: 15px;
         }
 
-        p {
-            color: #5d6d7e;
+        p.desc {
+            color: #64748b;
             font-size: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            font-weight: 500;
         }
 
         /* Button Action Area */
         .action-area {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         /* Unified Button Styling */
@@ -92,50 +104,50 @@
             display: block;
             padding: 16px 20px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
+            font-weight: 700;
+            font-size: 15px;
             border-radius: 12px;
             transition: all 0.3s ease;
             text-transform: uppercase;
             text-align: center;
+            letter-spacing: 1px;
         }
 
-        /* Login Button (Filled) */
+        /* Login Button */
         .login-btn {
-            background-color: #87CEEB; 
+            background-color: #0ea5e9; 
             color: white;
-            box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
         }
 
         .login-btn:hover {
-            background-color: #00BFFF;
+            background-color: #0369a1;
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 191, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(3, 105, 161, 0.4);
         }
 
-        /* Signup Button (Outline) */
+        /* Signup Button */
         .signup-btn {
             background-color: transparent;
-            color: #1976D2;
-            border: 2px solid #87CEEB;
+            color: #0369a1;
+            border: 2px solid #0ea5e9;
         }
 
         .signup-btn:hover {
-            background-color: rgba(135, 206, 235, 0.1);
-            border-color: #00BFFF;
+            background-color: rgba(14, 165, 233, 0.05);
+            border-color: #0369a1;
             transform: translateY(-1px);
         }
 
-        /* Footer Info */
-        .branch-info {
-            margin-top: 30px;
-            font-size: 13px;
-            color: #7f8c8d;
-        }
-
-        .location-tag {
-            color: #1976D2;
-            font-weight: bold;
+        /* Copyright Info */
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -145,20 +157,20 @@
         <div class="hardware-logo">
             <span class="logo-icon">⚒</span>
         </div>
-<h2>Welcome to</h2>
+        
+        <h2 class="subtitle">Welcome to</h2>
         <h1>Nyondo Stock General Hardware Ltd</h1>
         
-        <h2 class="welcome-msg">Internal Portal</h2>
-        
-        <p>Management & Inventory Control System</p>
+        <h2 class="welcome-msg">Internal Staff Portal</h2>
+        <p class="desc">Operations & Inventory Control System</p>
 
         <div class="action-area">
             <a href="Login.html" class="btn login-btn">Staff Login</a>
             <a href="Signup.html" class="btn signup-btn">Enroll New Staff</a>
         </div>
 
-        <div class="branch-info">
-            Nansana  | <span class="location-tag">NYONDO Stock General Hardware LTD</span>
+        <div class="copyright">
+            &copy; 2026 NYONDO Stock General Hardware Ltd. All Rights Reserved.
         </div>
     </div>
 

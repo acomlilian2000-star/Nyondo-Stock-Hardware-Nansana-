@@ -134,12 +134,12 @@
         <h1>NYONDO General Hardware LTD</h1>
         <p class="subtitle">Official Stock Arrival & Finance Portal</p>
 
-        <form>
+        <form action="/Stock" method="post">
             <div class="section-title">Item Information</div>
             
             <div class="form-group">
                 <label for="item-name">Select Hardware Item</label>
-                <select id="item-name" required>
+                <select id="item-name" required name="itemName">
                     <option value="" disabled selected>-- Select from Inventory --</option>
                     <optgroup label="Construction Materials">
                         <option value="cem-ii">Cement (CEM II N)</option>
@@ -164,7 +164,7 @@
             <div class="input-row">
                 <div class="form-group">
                     <label for="supplier-select">Factory Supplier</label>
-                    <select id="supplier-select" required>
+                    <select id="supplier-select" required name="supplier">
                         <option value="" disabled selected>-- Select Depot --</option>
                         <option value="hima">Hima Cement Ltd</option>
                         <option value="tororo">Tororo Cement Ltd</option>
@@ -175,18 +175,18 @@
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity Received</label>
-                    <input type="number" id="quantity" placeholder="Units received" required>
+                    <input type="number" id="quantity" name="quantity" placeholder="Units received" required>
                 </div>
             </div>
 
             <div class="input-row">
                 <div class="form-group">
                     <label for="unit-cost">Unit Cost (UGX)</label>
-                    <input type="number" id="unit-cost" placeholder="Predetermined Cost" required>
+                    <input type="number" name="unitCost" id="unit-cost" placeholder="Predetermined Cost" required>
                 </div>
                 <div class="form-group">
                     <label for="unit-price">Unit Price (UGX)</label>
-                    <input type="number" id="unit-price" placeholder="Predetermined Price" required>
+                    <input type="number" name="unitPrice" id="unit-price" placeholder="Predetermined Price" required>
                 </div>
             </div>
 
@@ -195,19 +195,19 @@
                 <label>Transaction Type</label>
                 <div class="radio-group">
                     <label class="radio-item">
-                        <input type="radio" name="pay-method" value="cash" checked> Full Cash
+                        <input type="radio" name="paymentMethod" value="cash" checked> Full Cash
                     </label>
                     <label class="radio-item">
-                        <input type="radio" name="pay-method" value="credit"> Full Credit
+                        <input type="radio" name="paymentMethod" value="credit"> Full Credit
                     </label>
                     <label class="radio-item">
-                        <input type="radio" name="pay-method" value="partial"> Partial Payment
+                        <input type="radio" name="paymentMethod" value="partial"> Partial Payment
                     </label>
                 </div>
 
                 <div class="form-group">
                     <label for="amount-paid">Actual Amount Paid (UGX)</label>
-                    <input type="number" id="amount-paid" placeholder="e.g., 500000" required>
+                    <input type="number" id="amount-paid" name="amountPaid" placeholder="e.g., 500000" required>
                     <p class="helper-text">* If this is a Full Credit transaction, please enter 0.</p>
                 </div>
             </div>
